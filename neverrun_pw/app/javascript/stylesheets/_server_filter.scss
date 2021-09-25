@@ -1,0 +1,28 @@
+.server-filter {
+  background: #436280;
+  display: inline-block;
+  white-space: nowrap;
+  margin-left: auto;
+
+  label {
+    margin: 0;
+  }
+
+  input {
+    padding: 0 10px;
+  }
+}
+
+.server-filter-btn {
+  display: inline-block;
+  height: 100%;
+}
+
+.server-filter-btn:hover {
+  cursor: pointer;
+}
+
+.server-filter-icon {
+  margin: 0 10px;
+  vertical-align: middle;
+}

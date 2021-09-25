@@ -1,0 +1,29 @@
+.server-address-btn {
+  display: flex;
+  min-width: fit-content;
+  background-color: #F7F7F7;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  width: 100%;
+
+  .server-address {
+    font-size: 1.1em;
+    text-align: right;
+    color: black;
+    margin: auto;
+    padding: 4px 10px;
+    width: inherit;
+  }
+
+  button {
+    background: #ccc;
+    border: none;
+    color: #262626;
+    padding: 0 10px;
+  }
+
+  button:hover {
+    cursor: pointer;
+    color: #8A9EA6;
+  }
+}

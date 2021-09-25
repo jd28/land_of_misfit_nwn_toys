@@ -1,0 +1,68 @@
+.container-fluid.server
+  .row
+    .col-12
+      .server-header
+        %h1.server-name= @server.server_name
+        %h2.module-name= @server.module_name
+
+  .row
+    .col-xl-9
+      = render partial: 'server/player_charts'
+
+
+      .server-description
+        %h3 Description
+
+        - if @server.server_description.length > 0
+          .description!= markdown @server.server_description
+
+        - if @server.server_description.length > 0 and @server.module_description.length > 0
+          %hr
+
+        .description= auto_link @server.module_description, html: { target: '_blank' }
+
+    .col-xl-3
+      .server-info-table
+        %table
+          %tbody
+            %tr
+              %td Game
+              %td= version_to_s @server.version
+            %tr
+              %td Type
+              %td= gametype(@server.gametype)
+            %tr
+              %td Address
+              %td= "#{@server.address}:#{@server.port}"
+            %tr
+              %td Levels
+              %td= "#{@server.level_min} - #{@server.level_max}"
+
+            %tr
+              %td Password
+              %td= checkbox(@server.private)
+
+            %tr
+              %td ELC
+              %td= checkbox(@server.elc)
+
+            %tr
+              %td ILR
+              %td= checkbox(@server.ilr)
+
+            %tr
+              %td Localvault
+              %td= checkbox(@server.localvault)
+
+            %tr
+              %td One Party
+              %td= checkbox(@server.single_party)
+
+            %tr
+              %td Player Pause
+              %td.corner-br= checkbox(@server.player_pause)
+
+:javascript
+  setInterval(
+    function() { refreshPlayerCharts(#{@server.version}, #{@server.id}); },
+    60 * 1000);

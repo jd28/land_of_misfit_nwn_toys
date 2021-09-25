@@ -1,0 +1,121 @@
+.server-table {
+  a:hover {
+    color: #436280;
+    text-decoration: none;
+  }
+
+  th {
+    cursor: pointer;
+
+    .sorting_desc {
+      background_color: #0090C8;
+    }
+  }
+
+  th:hover {
+    background: #061F2F;
+    color: #dbe4ed;
+  }
+
+  td {
+    border: none !important;
+    vertical-align: middle;
+  }
+
+  td:nth-child(1) {
+    width: 100%;
+  }
+  td:nth-child(2) {
+    white-space: nowrap;
+  }
+
+  .server-name, .server-count {
+    font-size: 1.3em;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
+
+.server-entry {
+
+}
+
+.server-sub {
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+.game-type {
+  font-weight: bold;
+  padding: .2em 10px;
+  font-size: .8em;
+  font-variant: all-petite-caps;
+  vertical-align: text-bottom;
+  border-radius: 10px;
+  background-color: #436280;
+  border: 1px solid #4a4a4a;
+}
+
+.server-offline {
+  a {
+    color: #565656;
+  }
+}
+
+.server-private {
+  a {
+    color: #7e0000;
+  }
+}
+
+.server-online {
+  a {
+    color: #a3bad2;
+  }
+}
+
+.module-name {
+  padding-right: 5px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.legend {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.legend-wrapper {
+  margin-top: auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+%legend-square-base {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.online-legend {
+  @extend %legend-square-base;
+  background-color: #a3bad2;;
+}
+
+.offline-legend {
+  @extend %legend-square-base;
+  background-color: #565656;
+}
+
+.private-legend {
+  @extend %legend-square-base;
+  background-color: #7e0000;
+}
+
+.server-table-top {
+  display: flex;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 5px;
+}

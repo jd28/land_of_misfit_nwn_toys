@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: neverrun_pw_development
+
+test:
+  <<: *default
+  database: neverrun_pw_test
+
+production:
+  <<: *default
+  database: neverrun_pw_production
+  username: neverrun_pw
+  password: <%= ENV['NEVERRUN_PW_DATABASE_PASSWORD'] %>

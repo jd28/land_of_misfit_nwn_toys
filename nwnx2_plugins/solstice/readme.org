@@ -1,0 +1,142 @@
+nwnx_luajit (c) 2011-2012 jmd (jmd2028 at gmail dot com) aka leo_x
+
+* Overview
+Based original on Pardik's nwnx_lua originally.  The structure and scope have all been changed
+so much that it is quite different.
+
+* Goals
+1. Directly exposing the game engine to Lua via Luajit's FFI module.
+2. Bypass NWN VM Stack.
+3. NWN scripts can be replaced piecemeal.
+4. No shunting through NWN scripts.
+5. Fun, learning Lua
+
+* State
+Alpha.  A great deal of testing and documentation still to do.
+
+* Incompatabilities with other plugins.
+1. nwnx_events - Necessary for conditional scripts
+
+* Overlap with other plugins
+1. nwnx_funcs & nwnx_structs - Lua scripts have direct access to game objects and structures.
+2. nwnx_odbc - Partially.  With LuaSQL you could do all but SCORCO.
+   
+* Dependencies
+1. LuaJIT >2.0
+2. LuaFileSystem
+   
+* Non-goals.
+1. Better performance than NWScript.  Though I think this is very
+   likely in a lot of cases.
+   
+* Limitations
+1. Almost no documentation.
+2. Lack of testing
+   
+* Possible Difficulties:
+Because Lua has features that do not have direct analogues in NWScript a great
+deal of care would be necessary when using more advanced features like
+closures as there might be no easy way to ensure that some internal
+game structures are still extent.  So care would have to be taken
+as to which variables are being captured if the closure is going to be
+used in a DelayCommand
+
+* Differences to NWScript
+  1. There is no concept of OBJECT_SELF.  Any such parameter is passed explictly.
+  2. NWN objects in Lua are not represented by unsingned 32bit integers.  They are proxy objects to internal game objects.
+  3. The scripting interface is more 'object oriented'.
+  4. Actions are explicitly assigned.
+  5. Additional object types have been added.  Namely Traps and Locks. Allowing a more simple interface to trapped and locked objects.
+
+* Objects
+  Becuse nwnx_luajit uses proxied objects, internal objects could have their
+  state 'expanded' using C.  e,g. if one wanted to add some additional
+  combat flag to an object, etc.  All metatypes inherit from Object.
+** Object
+   Type: object_t
+   Metatype: Object
+*** Area
+    Type: area_t
+    Metatype: Area
+*** Creature
+    Type: creature_t
+    Metatype: Creature
+*** Door
+    Type: door_t
+    Metatype: Door
+*** Encounter
+    Type: encounter_t
+    Metatype: Encounter
+*** Item
+    Type: item_t
+    Metatype: Item
+*** Lock
+    This is a new type abstracting the functions on locked objects.  The
+    object proxied here could be any object is lockable.
+    Type: lock_t
+    Metatype: Lock
+*** Module
+    Type: module_t
+    Metatype: Module
+*** Placeable
+    Type: placeable_t
+    Metatype: Placeable
+*** Store
+    Type: store_t
+    Metatype: Store
+*** Trap
+    This is a new type abstracting trapped objects.  The object proxied
+    here could be any object that is the trappable.
+    Type: trap_t
+    Metatype: Trap
+*** Trigger
+    Type: trigger_t
+    Metatype: Trigger
+*** Waypoint
+    Type: waypoint_t
+    Metatype: Waypoint
+* Engine Structures
+** Action
+   Unimplemented currently.  Propably never will be because Actions are put into the action queue without being returned.  Perhaps
+   there could be a more direct way of creating them rather then via the NWN stack.
+** Effect
+   One exception is the Effect structure, which is proxied and extend with a boolean value representing whether it is 'direct' or not. 
+   This allows the modification of applied effects without copying, removing, and re-applying effects.
+   Type: effect_t
+   Metatype: Effect
+** Event
+   Unimplemented currently
+** Itemprop
+   Type: itemprop_t
+   Metatype: Itemprop
+   Inherits: Effect
+** Location
+   Identical to the NWN engine structure.
+** Spawn Point
+   This is a new structure representing x,y,z, and the spawn points
+   orientation.
+** Talent
+   Unimplemented currently.
+** Vector
+   Identical to the NWN engine structure.
+
+* Interaction with Game Engine
+1. Scripts: All scripts map to function calls in Lua's global namespace
+   with an explicitly passed 'OBJECT_SELF'. If a function exists it will run in
+   place of the script, if no function exists the game engine will
+   attempt to run the script as normal.  So scripts can be replaced piecmeal.
+   Example: NWScript: ExecuteScript("heartbeat", oObject) -> Lua: hearbeat(oObject)
+2. Objects: When an object is popped from the NWN stack or through
+   some more direct method nwnx_luajit looks the object up in a cache,
+   if it does not a NWNX Luajit Type is created as a proxy to that
+   internal object.  When that interal objects destructor is called,
+   the object is removed from the cache and any memory used will be
+   freed by the Lua garbage collector.
+3. Most object state is exposed directly to lua, so it can be accessed
+   without going through the NWScript Virtual Machine.  Note: some
+   care is needed here.
+4. DelayCommand, ActionDoCommand, and a new RepeatCommand (see
+   nwn/object/commands.lua) do not require shunting through NWScript.
+5. Conditional Scripts don't require shunting.  Any Lua script can be a
+   conditional if it returns a value.  That value is automaticall converted
+   to a boolean.

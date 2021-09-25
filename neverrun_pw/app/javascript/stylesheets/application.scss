@@ -1,0 +1,64 @@
+@import "~bootstrap/scss/bootstrap";
+@import "navbar";
+@import "server";
+@import "server_address_btn";
+@import "server_info_table";
+@import "server_filter";
+@import "server_table";
+
+body {
+  background-image: url('/nwn-tendrils.png');
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  background-color: black;
+
+  color: #dbe4ed;
+  margin: 0 auto;
+}
+
+@media (min-width: 1440px) {
+  body {
+    width: 80%;
+  }
+}
+
+a {
+  color: #a3bad2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #436280;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.hcenter {
+  display: table;
+  margin: 0 auto;
+}
+
+.fit-content {
+  min-width: fit-content;
+}
+
+hr {
+ margin-top: 1rem;
+ margin-bottom: 1rem;
+ border: 0;
+ border-top: 1px solid #F7F7F7;
+}
+
+.footer {
+  li {
+    list-style: none;
+  }
+}

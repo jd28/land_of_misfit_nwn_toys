@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server: one
+  count: 1
+  timestamp: <%= 2.days.ago.to_s :db %>
+
+two:
+  server: two
+  count: <%= 2.days.ago.to_s :db %>

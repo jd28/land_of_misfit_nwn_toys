@@ -1,0 +1,71 @@
+.server {
+  h1 {
+    color: #436280;
+    font-size: 2em;
+    letter-spacing: 3px;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    user-select: none;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.4em;
+    letter-spacing: 3px;
+    padding: 0;
+    white-space: nowrap;
+    user-select: none;
+    font-weight: bold;
+  }
+
+  h3 {
+    color: #a3bad2;
+    border-bottom: 1px solid #F7F7F7;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding-left:10px;
+    white-space: nowrap;
+  }
+
+  .server-header {
+
+    .module-name {
+      margin-left: 20px;
+    }
+  }
+
+  .server-players {
+    margin: 60px 0;
+  }
+
+  .server-description {
+    margin: 60px 0;
+  }
+
+  .server-list-grp {
+    width: fit-content;
+    margin-left: 20px;
+    color: black;
+  }
+
+  .server-list-grp-name {
+    background: #334B61;
+    color: #dbe4ed;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .server-description {
+    margin-left: 20px;
+  }
+
+  .server-chart-wrapper {
+    margin-bottom: 30px;
+  }
+
+  #disqus_thread {
+    margin-top: 60px;
+  }
+}

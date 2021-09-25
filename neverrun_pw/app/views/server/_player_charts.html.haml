@@ -1,0 +1,10 @@
+#playerCharts.server-players
+  %h3= "Players: #{@server.players} / #{@server.players_max}"
+  .row
+    .col-lg-8
+      %canvas#playerCountChart{height: '200px', width: "200px"}
+    .col-lg-4
+      %canvas#mostPopularTimesChart{height: '200px', width: "200px"}
+
+  :javascript
+    requestPlayerCharts(#{@server.id});

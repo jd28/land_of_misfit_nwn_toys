@@ -1,0 +1,27 @@
+%div.server-table-top
+  .legend-wrapper
+    .online-legend
+    %span.legend Online
+
+  .legend-wrapper
+    .offline-legend
+    %span.legend Offline
+
+  .legend-wrapper
+    .private-legend
+    %span.legend Private
+
+  .server-filter
+    %input.input-sm#serverFilterInput{type: "search", 'placeholder': "", 'aria-controls': "serverlist"}
+    .server-filter-btn#serverFilterBtn
+      %span.server-filter-icon.fa.fa-filter
+
+%table.server-table.table.dataTable#serverTable{style:"width:100%", 'data-order': '[[ 1, "desc" ]]'}
+  %thead
+    %tr
+      %th Server
+      %th.align-right Players
+      %th.align-right Address
+
+:javascript
+  initServerTable(#{@version});

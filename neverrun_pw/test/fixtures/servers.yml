@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: 8.8.8.8
+  port: 5120
+  build: 8091
+  version: 1
+  expansions: 0
+
+  server_name: Server Name
+  server_description: Server Description
+  pwc_url: url
+
+  module_name: Module Name
+  module_description: Module Description
+  module_url: url
+
+  players: 1
+  players_max: 90
+  online: false
+
+  elc: false
+  gametype: 0
+  ilr: false
+  level_min: 1
+  level_max: 40
+  localvault: false
+  player_pause: false
+  private: false
+  pvp: 1
+  single_party: false

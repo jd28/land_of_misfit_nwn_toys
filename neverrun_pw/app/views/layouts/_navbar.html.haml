@@ -1,0 +1,30 @@
+%nav
+  .game-toggle
+    %a.game-toggle-btn{href: servers_path(:nwn1), class: "game-toggle-#{@version == 1 ? 'primary' : 'secondary'}"} NWN
+    %a.game-toggle-btn{href: servers_path(:nwnee), class: "game-toggle-#{@version == 3 ? 'primary' : 'secondary'}"} NWN:EE
+    %a.game-toggle-btn{href: servers_path(:nwn2), class: "game-toggle-#{@version == 2 ? 'primary' : 'secondary'}"} NWN2
+
+  .nr-hamburger.dropdown
+    %button#dropdownMenuButton{ type: 'button',
+                                'data-toggle': 'dropdown',
+                                'aria-haspopup': "true",
+                                'aria-expanded': "false" }
+      %i.fas.fa-bars
+    .dropdown-menu.dropdown-menu-right
+      %h6.dropdown-header
+        Community
+      %a.dropdown-item{href: 'http://neverwinternights.info/', target: '_blank'}
+        Neverwinter Nights Info
+      %a.dropdown-item{href: 'https://neverwintervault.org/', target: '_blank'}
+        Neverwinter Vault
+
+      .dropdown-divider
+
+      %h6.dropdown-header
+        Forums
+
+      %a.dropdown-item{href: 'https://forums.beamdog.com/categories/neverwinter-nights', target: '_blank'}
+        Beamdog
+
+%img.nr-logo{alt: 'Logo', src: '/neverrun-logo.png'}
+

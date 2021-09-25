@@ -1,0 +1,16 @@
+{
+  "name": "neverrun_pw",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.3.0",
+    "bootstrap": "^4.0.0",
+    "chart.js": "^2.7.2",
+    "datatables.net": "^1.10.16",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9",
+    "string-format": "^0.5.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.11.1"
+  }
+}

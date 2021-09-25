@@ -1,0 +1,45 @@
+.game-toggle {
+  border-bottom-left-radius: 10px;
+  display: flex;
+  white-space: nowrap;
+
+  a {
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    text-decoration: none;
+  }
+
+  a.game-toggle-primary:hover {
+    color: green;
+  }
+}
+
+.game-toggle-primary {
+  background: #436280;
+  color: white;
+}
+
+input.game-toggle-secondary:hover {
+  cursor: pointer;
+  color: #436280;
+}
+
+.game-toggle-secondary {
+  background: #ccc;
+  color: black;
+}
+
+.game-toggle-btn {
+  display: flex;
+}
+
+.game-toggle-btn:nth-child(1) {
+  border-right: 1px solid black;
+  border-bottom-left-radius: 10px;
+}
+
+.game-toggle-btn:nth-last-child(1) {
+  border-left: 1px solid black;
+}
